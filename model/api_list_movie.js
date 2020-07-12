@@ -1,0 +1,13 @@
+const express = require('express');
+const router = express.Router();
+require('./connect_db');
+const dataModel = require('./data_schema');
+
+router.get("/", (req, res)=>{
+    dataModel.find({"poster":{$ne:null}},(err, data)=>{
+        if (err) res.json({result: "failed"});
+        res.json({ data });
+    }).limit(102);
+});
+
+module.exports = router;
