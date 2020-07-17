@@ -12,7 +12,6 @@ export default class Navbar extends Component {
       <Router>
         <div>
           <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
-            {/* Links */}
             <ul className="navbar-nav">
               <li className="nav-item">
                 <Link to="/" className="nav-link">
@@ -29,8 +28,7 @@ export default class Navbar extends Component {
                   เข้าสู่ระบบ
                 </Link>
               </li>
-             <li classname="nav-item" style={{color: 'dodgerblue'}}>ยินดีตอนรับ</li>
-
+             <li className="nav-item" style={{color: 'dodgerblue'}}>ยินดีตอนรับ</li>
             </ul>
           </nav>
         </div>

@@ -7,7 +7,7 @@ router.get("/", (req, res)=>{
     dataModel.find({"poster":{$ne:null}},(err, data)=>{
         if (err) res.json({result: "failed"});
         res.json({ data });
-    }).limit(102);
+    }).limit(100);
 });
 
 module.exports = router;

@@ -14,10 +14,10 @@ export default class Home extends Component {
     fetch("http://localhost:3080/api/v1/authen/")
       .then((res) => res.json())
       .then(
-        (result) => {
+        (res) => {
           this.setState({
             isLoaded: true,
-            items: result.data,
+            items: res.data,
           });
         },
         (error) => {
@@ -61,31 +61,36 @@ export default class Home extends Component {
       );
     } else {
       return (
-        <div className="row bg-color App">
-          {items.map((item, index) => (
-            <div className="col-md-4 mb-5" key={index}>
-              <div className="card h-100">
-                <div className="card-body" align="center">
-                  <img
-                    src={item.poster}
-                    alt={item.title}
-                    width={250}
-                    height={300}
-                  />
-                  <h2 className="card-title">{item.title}</h2>
-                  <p className="card-text">{item.plot}</p>
-                </div>
-                <div className="card-footer">
-                  <a
-                    href={"/detail/" + item.title}
-                    className="btn btn-primary btn-sm"
-                  >
-                    More Info
-                  </a>
+        <div>
+          <div className="s_App">
+            <input type="text" name="s_movie" />
+          </div>
+          <div className="row bg-color App">
+            {items.map((item, index) => (
+              <div className="col-md-4 mb-5" key={index}>
+                <div className="card h-100">
+                  <div className="card-body" align="center">
+                    <img
+                      src={item.poster}
+                      alt={item.title}
+                      width={250}
+                      height={300}
+                    />
+                    <h2 className="card-title">{item.title}</h2>
+                    <p className="card-text">{item.plot}</p>
+                  </div>
+                  <div className="card-footer">
+                    <a
+                      href={"/detail/" + item.title}
+                      className="btn btn-primary btn-sm"
+                    >
+                      More Info
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       );
     }

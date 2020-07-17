@@ -1,25 +1,40 @@
 import React, { Component } from "react";
-import Axios from "axios";
 export default class login extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-          email: "",
-          pws: "",
-          items:[],
-        };
-      }
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      pws: "",
+      items: [],
+      error: "",
+    };
+  }
   onClikLogin = () => {
-
+    fetch('http://localhost:3080/api/v1/login', {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({email: this.state.email, pws: this.state.pws})
+    })
+    .then((res) => res.json())
+    .then(
+      (res) => {
+        this.setState({
+          items: res.data,
+        });
+      },
+      (error) => {
+        this.setState({
+          error,
+        });
+      }
+    );
   };
   render() {
-    const {items} = this.state;
     return (
-        
       <div>
-          {items.map((item, index) => (
-              <li>{item.result}</li>
-          ))}
         <div className="row">
           <div className="col-lg-3 col-md-2" />
           <div className="col-lg-6 col-md-8 login-box">
@@ -32,15 +47,24 @@ export default class login extends Component {
                 <form>
                   <div className="form-group">
                     <label className="form-control-label">USERNAME</label>
-                    <input type="text" className="form-control" name="email" onChange={(e) => this.setState({ email: e.target.value })}/>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="email"
+                      onChange={(e) => this.setState({ email: e.target.value })}
+                    />
                   </div>
                   <div className="form-group">
                     <label className="form-control-label">PASSWORD</label>
-                    <input type="password" className="form-control" name="pws" onChange={(e) => this.setState({ pws: e.target.value })}/>
+                    <input
+                      type="password"
+                      className="form-control"
+                      name="pws"
+                      onChange={(e) => this.setState({ pws: e.target.value })}
+                    />
                   </div>
                   <div className="col-lg-12 loginbttm">
-                    <div className="col-lg-6 login-btm login-text">
-                    </div>
+                    <div className="col-lg-6 login-btm login-text"></div>
                     <div className="col-lg-6 login-btm login-button">
                       <button
                         type="button"
