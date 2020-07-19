@@ -13,8 +13,10 @@ app.use(function (req,res,next){
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use("/api/v1/authen", require('./api_list_movie'));
-app.use("/api/v1/", require('./register'));
-app.use("/api/v1/", require('./login_process'));
+app.use("/register", require('./register'));
+app.use("/api/v1/login", require('./login_process'));
+app.use("/api/v1/home", require('./home'));
+
 
 app.listen(3080,()=>{
     console.log("server ok");

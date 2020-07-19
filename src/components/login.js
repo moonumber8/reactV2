@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 export default class login extends Component {
   constructor(props) {
     super(props);
@@ -21,9 +22,14 @@ export default class login extends Component {
     .then((res) => res.json())
     .then(
       (res) => {
-        this.setState({
-          items: res.data,
-        });
+        // this.setState({
+        //   items: res.data,
+        // });
+        //setUserSession(res.data.user);
+        console.log(res.data.email);
+        this.props.history.push("/dashboard");
+        sessionStorage.setItem('user', JSON.stringify(res.data.email));
+
       },
       (error) => {
         this.setState({
@@ -32,6 +38,10 @@ export default class login extends Component {
       }
     );
   };
+  setUserSession = (token, user) => {
+    sessionStorage.setItem('token', token);
+    sessionStorage.setItem('user', JSON.stringify(user));
+  }
   render() {
     return (
       <div>

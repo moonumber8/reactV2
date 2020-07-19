@@ -12,7 +12,7 @@ export default class Register extends Component {
     };
   }
   onClickRegister = () => {
-    Axios.post("http://localhost:3080/api/v1/register/", this.state).then(
+    Axios.post("http://localhost:3080/register", this.state).then(
       (res) => {
         this.setState({
             items: res.data,

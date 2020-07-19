@@ -1,16 +1,21 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const router = express.Router();
+
 require("./connect_db");
 const dataUser = require("./user_schema");
 
 
-router.post("/login", async (req, res) => {
+router.post("/", async (req, res) => {
   const { email, pws } = req.body;
-  let result = await dataUser.findOne({email:{$eq:email}});
+  let result = null
+  console.log(email)
+  if(email != null){
+     result = await dataUser.findOne({email:{$eq:email}});
+  } 
   if (result != null) {
     if (bcrypt.compareSync(pws, result.password)) {
-        res.json(result);
+        res.json({data: result});
     } else { 
       res.json({
         result: "NO",
@@ -20,6 +25,7 @@ router.post("/login", async (req, res) => {
   }else{
       res.json({result: "No", message: "no userName"})
   }
+  res.end();
 });
 
 

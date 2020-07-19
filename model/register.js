@@ -2,10 +2,10 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const router = express.Router();
 require('./connect_db');
-const dataUser = require('./data_schema');
+const dataUser = require('./user_schema');
 const { json } = require('body-parser');
 
-router.post("/register", async (req, res)=>{
+router.post("/", async (req, res)=>{
    
     const hashedPassword = await bcrypt.hash(req.body.pws, 8)
 
