@@ -29,21 +29,17 @@ export default class Home extends Component {
         }
       );
   }
-  getUser = () => {
-    const userStr = sessionStorage.getItem('user');
-    if (userStr) return JSON.parse(userStr);
-    else return null;
-  }
+
   render() {
     const { error, isLoaded, items } = this.state;
-    const user = getUser();
+    
 
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
       return (
         <div className="divLoader">
-          <h1>{user.name}!</h1>
+         
           <svg viewBox="0 0 100 100" width="10em" height="10em">
             <path
               ng-attr-d="{{config.pathCmd}}"
