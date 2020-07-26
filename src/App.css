@@ -254,3 +254,11 @@ label {
 .loginbttm {
   padding: 0px;
 }
+
+.bg_detail {
+  text-align: center;
+  width: 88%;
+  margin: auto;
+  padding-top: 60px;
+  background-color: #ECF0F5;
+}

@@ -32,7 +32,7 @@ export default class Home extends Component {
 
   render() {
     const { error, isLoaded, items } = this.state;
-    
+    console.log(items)
 
     if (error) {
       return <div>Error: {error.message}</div>;
@@ -85,7 +85,7 @@ export default class Home extends Component {
                   </div>
                   <div className="card-footer">
                     <a
-                      href={"/detail/" + item.title}
+                      href={"/detail/"}
                       className="btn btn-primary btn-sm"
                     >
                       More Info

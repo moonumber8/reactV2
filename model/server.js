@@ -16,6 +16,7 @@ app.use("/api/v1/authen", require('./api_list_movie'));
 app.use("/register", require('./register'));
 app.use("/api/v1/login", require('./login_process'));
 app.use("/api/v1/home", require('./home'));
+app.use("/api/v1/detial", require('./detail'));
 
 
 app.listen(3080,()=>{
